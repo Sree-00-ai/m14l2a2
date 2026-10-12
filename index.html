@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Classes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2ff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 25px;
+            max-width: 420px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px #cccccc;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            color: #3730a3;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Student Details</h2>
+
+        <input type="text" id="name" placeholder="Enter student name">
+
+        <br>
+
+        <input type="number" id="age" placeholder="Enter student age">
+
+        <br>
+
+        <button onclick="createStudent()">Create Student</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Create a class
+        class Student {
+
+            // Initialize properties
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            // Create a method
+            displayDetails() {
+                return "Student Name: " + this.name +
+                    "<br>Student Age: " + this.age;
+            }
+        }
+
+        function createStudent() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+
+            if (name.trim() === "" || age === "" ||
+                Number(age) <= 0) {
+                document.getElementById("result").textContent =
+                    "Please enter a name and a valid age.";
+                return;
+            }
+
+            // Create an object from the class
+            const student1 = new Student(name, age);
+
+            // Call the method
+            document.getElementById("result").innerHTML =
+                student1.displayDetails();
+        }
+    </script>
+
+</body>
+
+</html>
